@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967996526419548744}
-  - component: {fileID: 7968015010366635104}
+  - component: {fileID: -3721090384810719012}
   m_Layer: 0
-  m_Name: LandManager
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,9 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7968015010366635104
+--- !u!114 &-3721090384810719012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4606716055769130018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c319a97fb5d3af2850b81ade15be37, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cac9ecf719b3e7eea17ca4a7c42e420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectPrefab: {fileID: 4671419088924696411, guid: ecb9392fc64105614b94adc51870a376, type: 3}
-  _positionOffset: 3
-  _anchorTransform: {fileID: 0}
-  _worldSpriteInfo: {fileID: 0}
-  _initialLandObjectCount: 5
+  _objectPrefab: {fileID: 8704640990139492884, guid: 04ababa7d1fbdde25aa5e354f10a3463, type: 3}
+  _positionOffset: 0.5

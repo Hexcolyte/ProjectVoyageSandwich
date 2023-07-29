@@ -11,11 +11,13 @@ namespace VoyageSandwich.Core.Main
         [SerializeField] private BaseComponent[] _components;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private LandManager _landManager;
+        [SerializeField] private EnemyManager _enemyManager;
 
         public void StartOrchestrating()
         {
             _cameraController.Initialize();
             _landManager.Initialize(_cameraController);
+            _enemyManager.Initialize();
         }
 
         private void Update()
@@ -24,6 +26,7 @@ namespace VoyageSandwich.Core.Main
 
             _cameraController.Tick(deltaTime);
             _landManager.Tick(deltaTime);
+            _enemyManager.Tick(deltaTime);
         }
     }
 }

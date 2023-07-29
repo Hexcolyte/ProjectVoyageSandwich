@@ -12,6 +12,8 @@ namespace VoyageSandwich.World.Game
 
         public override void Initialize()
         {
+            base.Initialize();
+
             float aspectRatio = GetCameraAspectRatio();
             float factor = Mathf.InverseLerp(.35f, .8f, aspectRatio);
             float zPos = Mathf.Lerp(-8f, -6f, factor);
