@@ -6,12 +6,6 @@ using VoyageSandwitch.Shell.Enum;
 
 namespace VoyageSandwich.World.Player
 {
-    enum SwipeDirection
-    {
-        Left,
-        Right
-    }
-
     [RequireComponent(typeof(VoidListener))]
     [RequireComponent(typeof(IntListener))]
     public class PlayerController : BaseComponent
@@ -30,7 +24,7 @@ namespace VoyageSandwich.World.Player
         private VoidListener _tapInputListener;
         private IntListener _swipeInputListener;
         
-        private SwipeDirection _swipeDirection;
+        private SwipeDirectionEnum _swipeDirection;
 
         private PathPositionEnum _pathPosition = PathPositionEnum.Center; 
         
@@ -77,7 +71,7 @@ namespace VoyageSandwich.World.Player
             {
                 if(_pathPosition != PathPositionEnum.Right)
                 {
-                    _swipeDirection = SwipeDirection.Right;
+                    _swipeDirection = SwipeDirectionEnum.Right;
                     transform.position = new Vector2(transform.position.x + 1, transform.position.y);
                     _isDashing = true;
 
@@ -90,7 +84,7 @@ namespace VoyageSandwich.World.Player
             {
                 if(_pathPosition != PathPositionEnum.Left)
                 {
-                    _swipeDirection = SwipeDirection.Left;
+                    _swipeDirection = SwipeDirectionEnum.Left;
                     transform.position = new Vector2(transform.position.x - 1, transform.position.y);
                     _isDashing = true;
 
@@ -107,7 +101,7 @@ namespace VoyageSandwich.World.Player
 
             if (_isDashing)
             {
-                if (_swipeDirection == SwipeDirection.Right) return LockState(Dash, _dashDuration);
+                if (_swipeDirection == SwipeDirectionEnum.Right) return LockState(Dash, _dashDuration);
                 else return LockState(DashLeft, _dashDuration);
             }
 
