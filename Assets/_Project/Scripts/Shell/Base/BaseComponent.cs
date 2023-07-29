@@ -1,12 +1,10 @@
 using UnityEngine;
 
-namespace VoyageSandwich.Core.Game
+namespace VoyageSandwich.Shell.Base
 {
     public abstract class BaseComponent: MonoBehaviour
     {
-        private void Update() => Tick();
-
-        protected virtual void Tick() {}
-        public abstract void Initialize();
+        public virtual void Tick(float deltaTime) {}
+        public virtual void Initialize() {}
     }
 }
