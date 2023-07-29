@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPrefab: {fileID: 4671419088924696411, guid: ecb9392fc64105614b94adc51870a376, type: 3}
-  _positionOffset: 3
+  _positionOffset: 1
   _anchorTransform: {fileID: 0}
   _worldSpriteInfo: {fileID: 0}
-  _initialLandObjectCount: 5
+  _initialLandObjectCount: 15

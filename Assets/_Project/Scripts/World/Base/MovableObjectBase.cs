@@ -5,7 +5,7 @@ namespace VoyageSandwich.World.Base
 {
     public abstract class MovableObjectBase : BaseComponent
     {
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] protected SpriteRenderer _spriteRenderer;
 
         public float CurrentYPos => transform.localPosition.y;
 
@@ -18,6 +18,11 @@ namespace VoyageSandwich.World.Base
         public virtual void Move(Vector3 newPosition)
         {
             transform.localPosition = newPosition;
+        }
+
+        public virtual void Rotate(Quaternion newRotation)
+        {
+            _spriteRenderer.transform.rotation = newRotation;
         }
 
         public virtual void Show()

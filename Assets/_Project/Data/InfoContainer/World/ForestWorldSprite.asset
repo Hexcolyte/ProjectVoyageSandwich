@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c14758cc95e588781eb32fbb7b5e57, type: 3}
   m_Name: ForestWorldSprite
   m_EditorClassIdentifier: 
-  _landSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _landSprite: {fileID: 21300000, guid: 445adcbea3a7e9f4c94684352a087950, type: 3}
+  _propSpriteChance:
+  - Sprite: {fileID: 21300000, guid: 5ba98182e75597e4d969025a6ccb2310, type: 3}
+    Chance: 4
+  - Sprite: {fileID: 21300000, guid: eb55aadcaa269df41a0ad7dd0869f668, type: 3}
+    Chance: 10

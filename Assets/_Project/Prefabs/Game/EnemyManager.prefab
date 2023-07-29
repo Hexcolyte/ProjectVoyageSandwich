@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPrefab: {fileID: 8704640990139492884, guid: 04ababa7d1fbdde25aa5e354f10a3463, type: 3}
-  _positionOffset: 0.5
+  _positionOffset: 1
+  _anchorTransform: {fileID: 0}

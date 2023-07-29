@@ -43,15 +43,7 @@ namespace VoyageSandwich.World.Game
             if (_existingObjectQueue.Count <= 0)
                 return;
 
-            T firstLand = _existingObjectQueue.Peek();
-
-            if (firstLand.CurrentYPos <= FinalYPos)
-            {
-                T landToBeRemoved = _existingObjectQueue.Dequeue();
-                _objectPool.Release(landToBeRemoved);
-
-                OnLastObjectScrollEnded();
-            }
+            T firstObj = _existingObjectQueue.Peek();
 
             foreach (T obj in _existingObjectQueue)
             {
@@ -59,6 +51,14 @@ namespace VoyageSandwich.World.Game
                 currentYPos -= _positionOffset;
                 
                 obj.MoveY(currentYPos);
+            }
+
+            if (firstObj.CurrentYPos <= FinalYPos)
+            {
+                T landToBeRemoved = _existingObjectQueue.Dequeue();
+                _objectPool.Release(landToBeRemoved);
+
+                OnLastObjectScrollEnded();
             }
         }
 

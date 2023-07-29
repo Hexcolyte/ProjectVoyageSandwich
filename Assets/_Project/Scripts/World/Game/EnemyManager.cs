@@ -39,7 +39,8 @@ namespace VoyageSandwich.World.Game
 
             foreach (EnemyObject enemyObject in _existingObjectQueue)
             {
-                Quaternion rotation = Quaternion.LookRotation(enemyObject.transform.position - cameraPosition, Vector3.up);
+                // Quaternion rotation = Quaternion.LookRotation(enemyObject.transform.position - cameraPosition, Vector3.up);
+                Quaternion rotation = Quaternion.Euler(-40f, 0f, 0f);
                 enemyObject.Rotate(rotation);
             }
         }
@@ -48,7 +49,8 @@ namespace VoyageSandwich.World.Game
         {
             EnemyObject enemyObject = _objectPool.Get();
 
-            float maxDistanceUnit = 8f;
+            //Add one unit because it will go to the next step right after this
+            float maxDistanceUnit = 8f + 1f;
             enemyObject.Move(new Vector3(0f, maxDistanceUnit - _positionOffset, 0f));
 
             _existingObjectQueue.Enqueue(enemyObject);

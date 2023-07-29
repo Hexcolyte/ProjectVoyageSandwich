@@ -331,10 +331,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1670442517}
     - target: {fileID: 8815358311856970496, guid: 243180fa306d753299a6dbc7281de427, type: 3}
-      propertyPath: _initialLandObjectCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8815358311856970496, guid: 243180fa306d753299a6dbc7281de427, type: 3}
       propertyPath: _anchorSpriteRendererTransform
       value: 
       objectReference: {fileID: 1670442517}
