@@ -16,7 +16,7 @@ namespace VoyageSandwich.Shell.Audio
             return (60f / bpm) * 1000;
         }
 
-        public static float GetSongPositionInBeats(float secondsPerBeat, float startTime, float initialTimeOffsetInMilliseconds)
+        public static float GetSongPositionInMilliseconds(float secondsPerBeat, float startTime, float initialTimeOffsetInMilliseconds)
         {
             return (float) (AudioSettings.dspTime - startTime - initialTimeOffsetInMilliseconds) * 1000;
         }

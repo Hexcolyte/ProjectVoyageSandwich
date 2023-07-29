@@ -26,7 +26,7 @@ namespace VoyageSandwich.Core.Main
 
         public float beatThreshold;
 
-        private int previousBeatTime = 0;
+        private int _previousBeatTime = 0;
 
         // Start is called before the first frame update
         void Start()
@@ -44,22 +44,21 @@ namespace VoyageSandwich.Core.Main
             musicSource.Play();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            float songPositionInMilliseconds = AudioClock.GetSongPositionInBeats(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds + 0.5f);
-            int rounded = Mathf.FloorToInt(songPositionInMilliseconds / millisecondsPerBeat);
+            float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds);
+            int roundedBeatTime = Mathf.FloorToInt(songPositionInMilliseconds / millisecondsPerBeat);
 
-            if (previousBeatTime < rounded && AudioClock.IsAfterBeat(songPositionInMilliseconds, millisecondsPerBeat, beatThreshold))
+            if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, millisecondsPerBeat, beatThreshold))
             {
-                previousBeatTime = rounded;
+                _previousBeatTime = roundedBeatTime;
                 Debug.Log("Update: On Beat");
             }
-
         }
 
         public void Tap()
         {
-            float songPositionInMilliseconds = AudioClock.GetSongPositionInBeats(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds);
+            float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds);
             
             Debug.Log("On Beat");
         }
