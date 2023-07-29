@@ -4,6 +4,7 @@ using UnityEngine;
 using VoyageSandwich.World.Game;
 using VoyageSandwich.Shell.Base;
 using VoyageSandwich.Shell.Audio;
+using VoyageSandwich.World.Player;
 
 namespace VoyageSandwich.Core.Main
 {
@@ -14,6 +15,7 @@ namespace VoyageSandwich.Core.Main
         [SerializeField] private LandManager _landManager;
         [SerializeField] private EnemyManager _enemyManager;
         [SerializeField] private Conductor _conductor;
+        [SerializeField] private PlayerController _playerController;
 
         public void StartOrchestrating()
         {
@@ -21,6 +23,7 @@ namespace VoyageSandwich.Core.Main
             _landManager.Initialize(_cameraController, _conductor);
             _enemyManager.Initialize(_cameraController, _conductor);
             _conductor.Initialize();
+            _playerController.Initialize();
         }
 
         private void Update()
@@ -31,6 +34,7 @@ namespace VoyageSandwich.Core.Main
             _landManager.Tick(deltaTime);
             _enemyManager.Tick(deltaTime);
             _conductor.Tick(deltaTime);
+            _playerController.Tick(deltaTime);
         }
     }
 }

@@ -14,15 +14,18 @@ namespace VoyageSandwich.Shell.Input
         [SerializeField]
         private VoidEvent _touchEvent;
 
+        [SerializeField]
+        private IntEvent _swipeEvent;
+
         private void Awake()
         {
             Application.targetFrameRate = 0;
-            _playerControls = new IA_PlayerControls();
+            //_playerControls = new IA_PlayerControls();
         }
 
         private void OnEnable()
         {
-            _playerControls?.Enable();
+            //_playerControls?.Enable();
             Lean.Touch.LeanTouch.OnFingerTap += HandleOnTap;
             LeanTouch.OnFingerSwipe += HandleOnSwipe;
         }
@@ -45,11 +48,13 @@ namespace VoyageSandwich.Shell.Input
             Debug.Log($"{nameof(InputManager)} Swipe Action");
             if (finger.SwipeScaledDelta.x > 0)
             {
+                _swipeEvent?.Raise(1);
                 Debug.Log($"{nameof(InputManager)}: RIGHT");
             }
 
             else if (finger.SwipeScaledDelta.x < 0)
             {
+                _swipeEvent?.Raise(-1);
                 Debug.Log($"{nameof(InputManager)}: LEFT");
             }
 
@@ -57,7 +62,6 @@ namespace VoyageSandwich.Shell.Input
             {
                 Debug.Log($"{nameof(InputManager)}: JUMP");
             }
-            _touchEvent?.Raise();
         }
 
         private void SwipeActionEnded(InputAction.CallbackContext ctx)
