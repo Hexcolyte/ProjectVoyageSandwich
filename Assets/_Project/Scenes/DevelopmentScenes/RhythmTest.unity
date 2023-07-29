@@ -133,9 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 722512930}
   - component: {fileID: 722512928}
-  - component: {fileID: 722512931}
   - component: {fileID: 722512932}
   - component: {fileID: 722512933}
+  - component: {fileID: 722512934}
+  - component: {fileID: 722512935}
   m_Layer: 0
   m_Name: AudioListener
   m_TagString: Untagged
@@ -254,25 +255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &722512931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722512927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ae0cf37acd9e04e98247f0f7a836ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioBPM: 120
-  millisecondsPerBeat: 0
-  initialTimeOffsetInMilliseconds: 0
-  songPositionInBeats: 0
-  audioStartTime: 0
-  musicSource: {fileID: 722512928}
-  beatThreshold: 100
 --- !u!114 &722512932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a99a4eca7bf0a741a12580d03ba1fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
+  _touchEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
 --- !u!114 &722512933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,9 +284,9 @@ MonoBehaviour:
   unityEventResponse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722512931}
-        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.Conductor, Core.Main
-        m_MethodName: IsOnBeat
+      - m_Target: {fileID: 722512934}
+        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.InputListener, Core.Main
+        m_MethodName: ProcessInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -314,6 +296,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &722512934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722512927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conductor: {fileID: 722512935}
+  _beatThreshold: 200
+--- !u!114 &722512935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722512927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83644baaac16ce680a603785cffa6e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioBPM: 120
+  InitialTimeOffsetInMilliseconds: 0
+  musicSource: {fileID: 722512928}
+  beatThreshold: 100
 --- !u!1 &1250851566
 GameObject:
   m_ObjectHideFlags: 0

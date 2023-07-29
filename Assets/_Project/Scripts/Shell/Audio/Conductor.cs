@@ -10,10 +10,11 @@ namespace VoyageSandwich.Shell.Audio
     {
         public float audioBPM;
 
-        public float initialTimeOffsetInMilliseconds;
+        public float InitialTimeOffsetInMilliseconds;
 
         //How many seconds have passed since the song started
-        public float audioStartTime;
+        private float _audioStartTime;
+        public float AudioStartTime {  get { return _audioStartTime; } }
 
         //an AudioSource attached to this GameObject that will play the music.
         public AudioSource musicSource;
@@ -22,6 +23,7 @@ namespace VoyageSandwich.Shell.Audio
 
         private int _previousBeatTime = 0;
         private float _millisecondsPerBeat;
+        public float MillisecondsPerBeat { get { return _millisecondsPerBeat; } }
 
         public event Action OnBeat;
 
@@ -33,7 +35,7 @@ namespace VoyageSandwich.Shell.Audio
             _millisecondsPerBeat = AudioClock.GetTimeIntervalsPerBeat(audioBPM);
 
             //Record the time when the music starts
-            audioStartTime = (float)initTime;
+            _audioStartTime = (float)initTime;
 
             //Start the music
             musicSource.PlayScheduled(initTime);
@@ -41,7 +43,7 @@ namespace VoyageSandwich.Shell.Audio
 
         public override void Tick(float deltaTime)
         {
-            float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(_millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds);
+            float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(_millisecondsPerBeat, _audioStartTime, InitialTimeOffsetInMilliseconds);
             int roundedBeatTime = Mathf.FloorToInt(songPositionInMilliseconds / _millisecondsPerBeat);
 
             if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, _millisecondsPerBeat, beatThreshold))

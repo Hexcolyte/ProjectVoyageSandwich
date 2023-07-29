@@ -30,12 +30,21 @@ namespace VoyageSandwich.Shell.Input
             ""id"": ""06e7cbf1-d636-4831-9f7c-e12dcbd32b5c"",
             ""actions"": [
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
+                    ""name"": ""Tap"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""0a8ef8ea-ab58-4f33-bd40-eddb207a6434"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swipe"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a72ffe1b-3e2d-4d0e-9237-92d5ce4fd45e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -47,18 +56,40 @@ namespace VoyageSandwich.Shell.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""2f2ae89a-6c34-41e5-b036-e804ac470d2c"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""path"": ""<Touchscreen>/primaryTouch/startPosition/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ace1a06-1900-4642-bff8-fb924936845a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec16d748-c6c1-41a4-bb4e-b0cd2985d7c6"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -69,7 +100,8 @@ namespace VoyageSandwich.Shell.Input
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+            m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
+            m_Player_Swipe = m_Player.FindAction("Swipe", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -131,12 +163,14 @@ namespace VoyageSandwich.Shell.Input
         // Player
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Attack;
+        private readonly InputAction m_Player_Tap;
+        private readonly InputAction m_Player_Swipe;
         public struct PlayerActions
         {
             private @IA_PlayerControls m_Wrapper;
             public PlayerActions(@IA_PlayerControls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Attack => m_Wrapper.m_Player_Attack;
+            public InputAction @Tap => m_Wrapper.m_Player_Tap;
+            public InputAction @Swipe => m_Wrapper.m_Player_Swipe;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -146,16 +180,22 @@ namespace VoyageSandwich.Shell.Input
             {
                 if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
+                @Tap.started += instance.OnTap;
+                @Tap.performed += instance.OnTap;
+                @Tap.canceled += instance.OnTap;
+                @Swipe.started += instance.OnSwipe;
+                @Swipe.performed += instance.OnSwipe;
+                @Swipe.canceled += instance.OnSwipe;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
             {
-                @Attack.started -= instance.OnAttack;
-                @Attack.performed -= instance.OnAttack;
-                @Attack.canceled -= instance.OnAttack;
+                @Tap.started -= instance.OnTap;
+                @Tap.performed -= instance.OnTap;
+                @Tap.canceled -= instance.OnTap;
+                @Swipe.started -= instance.OnSwipe;
+                @Swipe.performed -= instance.OnSwipe;
+                @Swipe.canceled -= instance.OnSwipe;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -175,7 +215,8 @@ namespace VoyageSandwich.Shell.Input
         public PlayerActions @Player => new PlayerActions(this);
         public interface IPlayerActions
         {
-            void OnAttack(InputAction.CallbackContext context);
+            void OnTap(InputAction.CallbackContext context);
+            void OnSwipe(InputAction.CallbackContext context);
         }
     }
 }

@@ -6,12 +6,21 @@
             "id": "06e7cbf1-d636-4831-9f7c-e12dcbd32b5c",
             "actions": [
                 {
-                    "name": "Attack",
-                    "type": "Button",
+                    "name": "Tap",
+                    "type": "PassThrough",
                     "id": "0a8ef8ea-ab58-4f33-bd40-eddb207a6434",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Tap",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swipe",
+                    "type": "PassThrough",
+                    "id": "a72ffe1b-3e2d-4d0e-9237-92d5ce4fd45e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -23,18 +32,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "2f2ae89a-6c34-41e5-b036-e804ac470d2c",
-                    "path": "<Touchscreen>/primaryTouch",
+                    "path": "<Touchscreen>/primaryTouch/startPosition/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ace1a06-1900-4642-bff8-fb924936845a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec16d748-c6c1-41a4-bb4e-b0cd2985d7c6",
+                    "path": "<Mouse>/position",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
