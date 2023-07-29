@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c319a97fb5d3af2850b81ade15be37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laneSpriteRenderers: []
+  _landObjectPrefab: {fileID: 4671419088924696411, guid: ecb9392fc64105614b94adc51870a376, type: 3}
+  _worldSpriteInfo: {fileID: 0}
+  _anchorLandTransform: {fileID: 0}
