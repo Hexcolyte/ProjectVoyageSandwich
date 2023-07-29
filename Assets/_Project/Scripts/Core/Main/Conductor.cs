@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using VoyageSandwich.Shell.Audio;
 
 namespace VoyageSandwich.Core.Main
@@ -9,18 +11,22 @@ namespace VoyageSandwich.Core.Main
     {
         public float audioBPM;
 
-        public float secondsPerBeat;
+        public float millisecondsPerBeat;
 
-        public float initialBeatOffset;
+        public float initialTimeOffsetInMilliseconds;
 
         //Current song position, in beats
         public float songPositionInBeats;
 
         //How many seconds have passed since the song started
-        public float audioStatTime;
+        public float audioStartTime;
 
         //an AudioSource attached to this GameObject that will play the music.
         public AudioSource musicSource;
+
+        public float beatThreshold;
+
+        private int previousBeatTime = 0;
 
         // Start is called before the first frame update
         void Start()
@@ -29,22 +35,33 @@ namespace VoyageSandwich.Core.Main
             musicSource = GetComponent<AudioSource>();
 
             //Calculate the number of seconds in each beat
-            secondsPerBeat = AudioClock.GetTimeIntervalsPerBeat(audioBPM);
+            millisecondsPerBeat = AudioClock.GetTimeIntervalsPerBeat(audioBPM);
 
             //Record the time when the music starts
-            audioStatTime = (float)AudioSettings.dspTime;
+            audioStartTime = (float)AudioSettings.dspTime;
 
             //Start the music
             musicSource.Play();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void FixedUpdate()
         {
-            songPositionInBeats = AudioClock.GetSongPositionInBeats(secondsPerBeat, audioStatTime, initialBeatOffset);
+            float songPositionInMilliseconds = AudioClock.GetSongPositionInBeats(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds + 0.5f);
+            int rounded = Mathf.FloorToInt(songPositionInMilliseconds / millisecondsPerBeat);
 
-            if (songPositionInBeats % 1 == 0)
-                Debug.Log($"Beats: {songPositionInBeats}");
+            if (previousBeatTime < rounded && AudioClock.IsAfterBeat(songPositionInMilliseconds, millisecondsPerBeat, beatThreshold))
+            {
+                previousBeatTime = rounded;
+                Debug.Log("Update: On Beat");
+            }
+
+        }
+
+        public void Tap()
+        {
+            float songPositionInMilliseconds = AudioClock.GetSongPositionInBeats(millisecondsPerBeat, audioStartTime, initialTimeOffsetInMilliseconds);
+            
+            Debug.Log("On Beat");
         }
     }
 }

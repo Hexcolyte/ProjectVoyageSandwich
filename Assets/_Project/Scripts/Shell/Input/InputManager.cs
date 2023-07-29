@@ -10,8 +10,12 @@ namespace VoyageSandwich.Shell.Input
     {
         private IA_PlayerControls playerControls;
 
+        [SerializeField]
+        private VoidEvent touchEvent;
+
         private void Awake()
         {
+            Application.targetFrameRate = 0;
             playerControls = new IA_PlayerControls();
         }
 
@@ -32,7 +36,8 @@ namespace VoyageSandwich.Shell.Input
 
         private void AttackAction(InputAction.CallbackContext context)
         {
-            Debug.Log($"Touch started {context.ReadValue<float>()}");
+            Debug.Log($"{nameof(InputManager)} Tap Action");
+            touchEvent.Raise();
         }
     }
 }

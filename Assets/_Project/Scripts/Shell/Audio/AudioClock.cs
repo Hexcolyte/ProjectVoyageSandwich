@@ -13,14 +13,49 @@ namespace VoyageSandwich.Shell.Audio
         /// <returns></returns>
         public static float GetTimeIntervalsPerBeat(float bpm)
         {
-            return 60f / bpm;
+            return (60f / bpm) * 1000;
         }
 
-        public static float GetSongPositionInBeats(float secondsPerBeat, float startTime, float initialBeatOffset)
+        public static float GetSongPositionInBeats(float secondsPerBeat, float startTime, float initialTimeOffsetInMilliseconds)
         {
-            float songPosition = (float)AudioSettings.dspTime - startTime - initialBeatOffset;
+            return (float) (AudioSettings.dspTime - startTime - initialTimeOffsetInMilliseconds) * 1000;
+        }
 
-            return songPosition / secondsPerBeat;
+        public static bool IsOnBeat(float songPositionInMilliseconds, float timeIntervalPerBeatInMilliseconds, float timeOffsetThreshold)
+        {
+            float beatsModulusInMilliseconds = songPositionInMilliseconds % timeIntervalPerBeatInMilliseconds;
+
+            float timeOffsetFromBeatInMilliseconds;
+
+            if (beatsModulusInMilliseconds > timeIntervalPerBeatInMilliseconds / 2)
+            {
+                timeOffsetFromBeatInMilliseconds = timeIntervalPerBeatInMilliseconds - beatsModulusInMilliseconds;
+            }
+
+            else
+            {
+                timeOffsetFromBeatInMilliseconds = beatsModulusInMilliseconds;
+            }
+
+            return timeOffsetFromBeatInMilliseconds <= timeOffsetThreshold;
+        }
+
+        public static bool IsAfterBeat(float songPositionInMilliseconds, float timeIntervalPerBeatInMilliseconds, float timeOffsetThreshold)
+        {
+            return songPositionInMilliseconds % timeIntervalPerBeatInMilliseconds < timeOffsetThreshold;
+        }
+
+        public static int lastInterval;
+
+        public static bool CheckForNewInterval(float currentInterval)
+        {
+            if (Mathf.FloorToInt(currentInterval) != lastInterval)
+            {
+                lastInterval = Mathf.FloorToInt(currentInterval);
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -2,7 +2,8 @@
     "name": "Shell.Input",
     "rootNamespace": "",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:8e3ef857b2e69e04a8c44d9b121ad71c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
