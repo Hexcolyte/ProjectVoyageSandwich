@@ -17,8 +17,11 @@ namespace VoyageSandwich.World.Game
 
         private IEnumerator TestSpawn()
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(1f);
+            while (true)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(1f);
+            }
         }
 
         public void SpawnEnemy()
