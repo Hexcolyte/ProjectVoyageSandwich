@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using VoyageSandwich.World.Enemy;
+using VoyageSandwich.Shell.Audio;
 
 namespace VoyageSandwich.World.Game
 {
@@ -8,19 +9,38 @@ namespace VoyageSandwich.World.Game
     {
         protected override float FinalYPos => _anchorPosition.y;
 
-        public override void Initialize()
+        private CameraController _cameraController;
+
+        public void Initialize(CameraController cameraController, Conductor conductor)
         {
             base.Initialize();
 
-            StartCoroutine(TestSpawn());
+            _cameraController = cameraController;
+
+            conductor.OnBeat += OnBeat;
         }
 
-        private IEnumerator TestSpawn()
+        private void OnBeat()
         {
-            while (true)
-            {
+            if (Random.Range(0,5) == 0)
                 SpawnEnemy();
-                yield return new WaitForSeconds(1f);
+
+            MoveOneStep();
+        }
+
+        protected override void MoveOneStep()
+        {
+            base.MoveOneStep();
+
+            if (!IsInitialized)
+                return;
+
+            Vector3 cameraPosition = _cameraController.GetCamera().transform.position;
+
+            foreach (EnemyObject enemyObject in _existingObjectQueue)
+            {
+                Quaternion rotation = Quaternion.LookRotation(enemyObject.transform.position - cameraPosition, Vector3.up);
+                enemyObject.Rotate(rotation);
             }
         }
 

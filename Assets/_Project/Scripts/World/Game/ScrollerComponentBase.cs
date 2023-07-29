@@ -38,7 +38,7 @@ namespace VoyageSandwich.World.Game
             );
         }
 
-        public override void Tick(float deltaTime)
+        protected virtual void MoveOneStep()
         {
             if (_existingObjectQueue.Count <= 0)
                 return;
@@ -56,7 +56,7 @@ namespace VoyageSandwich.World.Game
             foreach (T obj in _existingObjectQueue)
             {
                 float currentYPos = obj.CurrentYPos;
-                currentYPos -= deltaTime;
+                currentYPos -= _positionOffset;
                 
                 obj.MoveY(currentYPos);
             }
