@@ -1,9 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Screen" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: flex-start; flex-direction: column; justify-content: center; height: 100%;">
+        <ui:VisualElement name="TopRow" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; align-items: center; align-self: auto; flex-basis: 10%; flex-shrink: 0; padding-left: 1%; padding-right: 1%; padding-top: 0; padding-bottom: 0; width: 100%; height: 100%; margin-top: 100px;">
+            <ui:VisualElement name="PlayerInfo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: center; flex-wrap: wrap;">
+                <ui:VisualElement name="PlayerIcon" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Player/user_player.png?fileID=2800000&amp;guid=6331a3a0bbb05dd468aa0c2b25d0f4ac&amp;type=3#user_player&apos;); -unity-background-scale-mode: scale-to-fit; align-self: center; width: 100px; height: 362px; align-items: center;" />
+                <ui:VisualElement name="Health" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-self: auto; align-items: center; -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row-reverse; background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Health/Health_Idle.png?fileID=2800000&amp;guid=0fe62227531bc7542989ef4b02ae4317&amp;type=3#Health_Idle&apos;); width: 30px; height: 220px; -unity-background-scale-mode: scale-to-fit; min-width: auto; align-items: center; justify-content: flex-start; flex-wrap: nowrap; margin-left: 20px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Health/Health_Idle.png?fileID=2800000&amp;guid=0fe62227531bc7542989ef4b02ae4317&amp;type=3#Health_Idle&apos;); -unity-background-scale-mode: scale-to-fit; height: 220px; width: 30px; margin-left: 20px;" />
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Health/Health_Idle.png?fileID=2800000&amp;guid=0fe62227531bc7542989ef4b02ae4317&amp;type=3#Health_Idle&apos;); height: 220px; -unity-background-scale-mode: scale-to-fit; width: 30px; margin-left: 20px; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Health/Health_Idle.png?fileID=2800000&amp;guid=0fe62227531bc7542989ef4b02ae4317&amp;type=3#Health_Idle&apos;); height: 220px; -unity-background-scale-mode: scale-to-fit; width: 30px; padding-left: 0; margin-left: 20px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PauseButtonContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Pause%20Button/Pause_Idle_1.png?fileID=2800000&amp;guid=ae7bebb606b84e241a9ec381eb74c1ae&amp;type=3#Pause_Idle_1&apos;); -unity-background-scale-mode: scale-to-fit; align-items: center; justify-content: center; width: 100px; height: 200px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ScoreRow" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; height: 100%; flex-direction: row; margin-top: 25px; padding-left: 1%;">
+            <ui:Label tabindex="-1" text="Score: " display-tooltip-when-elided="true" name="ScoreLabel" style="-unity-font: url(&apos;project://database/Assets/_Project/Sprites/UI/fonts/Bubblegum.ttf?fileID=12800000&amp;guid=fc34e7fd86ffd734b9d5c81d9e2115f4&amp;type=3#Bubblegum&apos;); font-size: 67px; -unity-font-definition: url(&apos;project://database/Assets/_Project/Sprites/UI/fonts/Bubblegum%20SDF.asset?fileID=11400000&amp;guid=9033ad29048611e49897e363322a5cb1&amp;type=2#Bubblegum SDF&apos;); -unity-text-outline-color: rgba(250, 250, 250, 0); color: rgb(255, 255, 255);" />
+            <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="Score" style="-unity-font: url(&apos;project://database/Assets/_Project/Sprites/UI/fonts/Bubblegum.ttf?fileID=12800000&amp;guid=fc34e7fd86ffd734b9d5c81d9e2115f4&amp;type=3#Bubblegum&apos;); font-size: 67px; -unity-font-definition: url(&apos;project://database/Assets/_Project/Sprites/UI/fonts/Bubblegum%20SDF.asset?fileID=11400000&amp;guid=9033ad29048611e49897e363322a5cb1&amp;type=2#Bubblegum SDF&apos;); -unity-text-outline-color: rgba(250, 250, 250, 0); color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="BeatsBar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; bottom: 0; left: 0; height: 188px; width: 1912px; background-image: url(&apos;project://database/Assets/_Project/Sprites/UI/Song%20Beats%20Button/bar.png?fileID=2800000&amp;guid=2e5d9754cc3196d4ab01b1b0385e4392&amp;type=3#bar&apos;);" />
+    </ui:VisualElement>
+</ui:UXML>
