@@ -8,8 +8,6 @@ namespace VoyageSandwich.World.Game
     public class BeatInputListener : BaseComponent
     {
         [SerializeField] private Conductor _conductor;
-        [SerializeField] private float _perfectBeatThreshold;
-        [SerializeField] private float _acceptableBeatThreshold;
 
         private int _previousBeatTime;
 
@@ -27,12 +25,12 @@ namespace VoyageSandwich.World.Game
             float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(_conductor.MillisecondsPerBeat, _conductor.AudioStartTime, _conductor.InitialTimeOffsetInMilliseconds);
             int roundedBeatTime = _conductor.GetRoundedBeatTime(songPositionInMilliseconds);
 
-            if (AudioClock.IsOnBeat(songPositionInMilliseconds, _conductor.MillisecondsPerBeat, _perfectBeatThreshold))
+            if (AudioClock.IsOnBeat(songPositionInMilliseconds, _conductor.MillisecondsPerBeat, _conductor.BeatInfo.PerfectBeatThreshold))
             {
                 _previousBeatTime = roundedBeatTime;
                 OnPerfectTap?.Invoke(songPositionInMilliseconds);
             }
-            else if (AudioClock.IsOnBeat(songPositionInMilliseconds, _conductor.MillisecondsPerBeat, _acceptableBeatThreshold))
+            else if (AudioClock.IsOnBeat(songPositionInMilliseconds, _conductor.MillisecondsPerBeat, _conductor.BeatInfo.AcceptableBeatThreshold))
             {
                 OnAcceptableTap?.Invoke(songPositionInMilliseconds);
             }

@@ -116,12 +116,12 @@ namespace VoyageSandwich.World.Game
 
             EnemyObjectRuntimeData newRuntimeData = new EnemyObjectRuntimeData(
                 targetSongPosition,
-                targetSongPosition + (_conductor.beatThreshold / 1000f / 2f),
+                targetSongPosition + (_conductor.BeatInfo.AcceptableBeatThreshold / 1000f / 2f),
                 pathPosition,
                 enemyType
             );
 
-            enemyObject.Initialize(newRuntimeData);
+            enemyObject.Initialize(newRuntimeData, _conductor.SecondsPerBeat);
 
             if (EnemyLibrary.TryGetPossibleSprites(enemyType, out Sprite[] enemySprites))
             {

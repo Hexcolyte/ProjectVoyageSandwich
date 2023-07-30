@@ -439,14 +439,6 @@ PrefabInstance:
       propertyPath: _anchorTransform
       value: 
       objectReference: {fileID: 251966790}
-    - target: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
-      propertyPath: audioBPM
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
-      propertyPath: beatThreshold
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

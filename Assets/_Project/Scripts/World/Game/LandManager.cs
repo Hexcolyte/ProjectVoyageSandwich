@@ -63,7 +63,7 @@ namespace VoyageSandwich.World.Game
             _existingObjectQueue.Enqueue(landObject);
 
             landObject.SetSprite(_worldSpriteInfo.LandSprite, _worldSpriteInfo.PropSpriteChance);
-            landObject.Initialize(new LandObjectRuntimeData(0f));
+            landObject.Initialize(new LandObjectRuntimeData(0f), _conductor.SecondsPerBeat);
         }
 
         protected override void OnLastObjectScrollEnded(LandObject lastRemovedObject)
