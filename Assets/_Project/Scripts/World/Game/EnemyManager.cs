@@ -123,9 +123,9 @@ namespace VoyageSandwich.World.Game
 
             enemyObject.Initialize(newRuntimeData, _conductor.SecondsPerBeat);
 
-            if (EnemyLibrary.TryGetPossibleSprites(enemyType, out Sprite[] enemySprites))
+            if (EnemyLibrary.TryGetPossibleAnimation(enemyType, out AnimatorOverrideController enemyAnimatorController))
             {
-                enemyObject.SetSprite(enemySprites[Random.Range(0, enemySprites.Length)]);
+                enemyObject.SetSpriteAnimation(enemyAnimatorController);
             }
         }
 
