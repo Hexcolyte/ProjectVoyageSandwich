@@ -5,6 +5,7 @@ using VoyageSandwich.Shell.Enemy;
 using VoyageSandwich.Shell.Enum;
 using VoyageSandwich.World.Enemy;
 using VoyageSandwich.Shell.Audio;
+using MoreMountains.Feedbacks;
 
 namespace VoyageSandwich.World.Game
 {
@@ -13,6 +14,7 @@ namespace VoyageSandwich.World.Game
         private EnemyManager _enemyManager;
         private PlayerController _playerController;
         private Conductor _conductor;
+        [SerializeField] MMF_Player _playerHit;
 
         public void Initialize(
             Conductor conductor,
@@ -100,7 +102,7 @@ namespace VoyageSandwich.World.Game
 
         private void TakeDamage(int damageCount = 1)
         {
-            Debug.Log("<color=red>TOOK DAMAGE</color>");
+            if (_playerHit) _playerHit.PlayFeedbacks();
         }
     }
 }

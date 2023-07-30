@@ -1,0 +1,16 @@
+.rhythm-label-indicator {
+    opacity: 0;
+}
+
+.show {
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    transition-timing-function: ease-in;
+}
+
+.hide {
+    opacity: 0;
+    transition-property: opacity, ignored;
+    transition-duration: 0.2s, 0s;
+    transition-timing-function: ease-out, ease;
+}

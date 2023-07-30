@@ -15,6 +15,10 @@ namespace VoyageSandwich.World.Game
         public event Action<float> OnAcceptableTap;
         public event Action<float> OnFailTap;
 
+        public VoidEvent OnPerfectEvent;
+        public VoidEvent OnAcceptableEvent;
+        public VoidEvent OnFailEvent;
+
         public void ProcessInput()
         {
             TryToAttack();
@@ -29,14 +33,17 @@ namespace VoyageSandwich.World.Game
             {
                 _previousBeatTime = roundedBeatTime;
                 OnPerfectTap?.Invoke(songPositionInMilliseconds);
+                OnPerfectEvent?.Raise();
             }
             else if (AudioClock.IsOnBeat(songPositionInMilliseconds, _conductor.MillisecondsPerBeat, _conductor.BeatInfo.AcceptableBeatThreshold))
             {
                 OnAcceptableTap?.Invoke(songPositionInMilliseconds);
+                OnAcceptableEvent?.Raise();
             }
             else
             {
                 OnFailTap?.Invoke(songPositionInMilliseconds);
+                OnFailEvent?.Raise();
             }
         }
     }
