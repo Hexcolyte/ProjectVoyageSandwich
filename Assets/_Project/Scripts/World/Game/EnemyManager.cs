@@ -164,22 +164,25 @@ namespace VoyageSandwich.World.Game
                         return false;
 
                     enemyObject = LeftLandQueue.Peek();
-                    return true;
+                    break;
 
                 case PathPositionEnum.Center:
                     if (CenterLandQueue.Count == 0)
                         return false;
 
                     enemyObject = CenterLandQueue.Peek();
-                    return true;
+                    break;
 
                 case PathPositionEnum.Right:
                     if (RightLandQueue.Count == 0)
                         return false;
 
                     enemyObject = RightLandQueue.Peek();
-                    return true;
+                    break;
             }
+
+            if (enemyObject != null && enemyObject.RuntimeData.EnemyType != EnemyTypeEnum.Obstacle)
+                return true;
 
             return false;
         }

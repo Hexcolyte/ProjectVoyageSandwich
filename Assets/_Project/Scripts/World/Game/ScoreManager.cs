@@ -81,7 +81,7 @@ namespace VoyageSandwich.World.Game
                 return false;
             }
 
-            isInRange = enemyObject.RuntimeData.TargetSongPosition - (songPositionInMilliseconds / 1000f) < _conductor.MillisecondsPerBeat / 1000f;
+            isInRange = enemyObject.RuntimeData.TargetSongPosition - (songPositionInMilliseconds / 1000f) < _conductor.SecondsPerBeat;
             return true;
         }
 
