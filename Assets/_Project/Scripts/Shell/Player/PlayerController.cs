@@ -12,14 +12,19 @@ namespace VoyageSandwich.Shell.Player
         private static readonly int Idle = Animator.StringToHash("Idle");
         private static readonly int Dash = Animator.StringToHash("Dash");
         private static readonly int DashLeft = Animator.StringToHash("DashLeft");
+        private static readonly int Attack = Animator.StringToHash("Attack");
 
         #region Serialized Fields
         [SerializeField]
         private float _dashDuration;
         [SerializeField]
+        private float _attackDuration;
+        [SerializeField]
         private Animator _anim;
         [SerializeField]
         MMF_Player DashFeedbacks;
+        [SerializeField]
+        MMF_Player AttackFeedbacks;
         #endregion
 
         #region Private Variables
@@ -33,8 +38,10 @@ namespace VoyageSandwich.Shell.Player
         private int _currentState = 0;
         private float _lockedTill;
         private bool _isDashing;
+        private bool _isAttacking;
 
         private MMF_Position DashPositionFeedback = new MMF_Position();
+
         private Transform PlayerTransform => _anim.transform;
 
         public PathPositionEnum PathPosition => _pathPosition;
@@ -65,11 +72,13 @@ namespace VoyageSandwich.Shell.Player
             _currentState = state;
 
             if(_isDashing) _isDashing = false;
+            if (_isAttacking) _isAttacking = false;
         }
 
         public void OnTap()
         {
-            // Debug.Log("Attack");
+            if(!_isAttacking) _isAttacking = true;
+            AttackFeedbacks.PlayFeedbacks();
         }
 
         public void OnSwipe(int swipeDirection)
@@ -120,6 +129,11 @@ namespace VoyageSandwich.Shell.Player
             {
                 if (_swipeDirection == SwipeDirectionEnum.Right) return LockState(Dash, _dashDuration);
                 else return LockState(DashLeft, _dashDuration);
+            }
+
+            if(_isAttacking)
+            {
+                return LockState(Attack, _attackDuration);
             }
 
             else

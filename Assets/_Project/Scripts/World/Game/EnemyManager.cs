@@ -6,6 +6,7 @@ using VoyageSandwich.Shell.Enemy;
 using VoyageSandwich.Shell.Enum;
 using System;
 using Random = UnityEngine.Random;
+using MoreMountains.Feedbacks;
 
 namespace VoyageSandwich.World.Game
 {
@@ -15,7 +16,11 @@ namespace VoyageSandwich.World.Game
         [SerializeField] private float ChanceToSpawnPerStep;
         [SerializeField] private EnemyLibrary EnemyLibrary;
 
+
         protected override float FinalYPos => _anchorPosition.y - _positionOffset;
+
+        [SerializeField] private MMF_Player _deathFeedBackPlayer;
+
         protected override float CurrentSongTime => _conductor.GetSongPosition();
 
         private CameraController _cameraController;
@@ -187,6 +192,9 @@ namespace VoyageSandwich.World.Game
         public void RemoveEnemy()
         {
             bool removed = RemoveObject(out EnemyObject enemyObject);
+
+            
+            _deathFeedBackPlayer.PlayFeedbacks();   
 
             if (removed)
                 RemoveEnemyFromLand(enemyObject);
