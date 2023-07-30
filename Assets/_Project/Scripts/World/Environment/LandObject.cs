@@ -9,10 +9,18 @@ namespace VoyageSandwich.World.Environment
     {
         [SerializeField] private SpriteRenderer[] _landSpriteRenderers;
         [SerializeField] private SpriteRenderer[] _propSpriteRenderers;
+        [SerializeField] private SpriteRenderer _leftWalkablePathSpriteRenderer;
+        [SerializeField] private SpriteRenderer _rightWalkablePathSpriteRenderer;
 
-        public void SetSprite(Sprite landSprite, SpriteSpawnChance[] propSpriteChances)
+        public void SetSprite(WorldSpriteInfo worldSpriteInfo)
         {
-            _spriteRenderer.sprite = landSprite;
+            SpriteSpawnChance[] propSpriteChances = worldSpriteInfo.PropSpriteChance;
+            Sprite landSprite = worldSpriteInfo.LandSprite;
+
+            _leftWalkablePathSpriteRenderer.sprite = worldSpriteInfo.LeftWalkablePathSprite;
+            _rightWalkablePathSpriteRenderer.sprite = worldSpriteInfo.RightWalkablePathSprite;
+
+            _spriteRenderer.sprite = worldSpriteInfo.CenterWalkablePathSprite;
 
             foreach (SpriteRenderer sr in _landSpriteRenderers)
             {

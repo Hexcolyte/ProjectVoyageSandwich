@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: ForestWorldSprite
   m_EditorClassIdentifier: 
   _landSprite: {fileID: 21300000, guid: 445adcbea3a7e9f4c94684352a087950, type: 3}
+  _leftWalkablePathSprite: {fileID: 21300000, guid: 5ae759df2a49f3fbd9e079ca1a9a5981, type: 3}
+  _centerWalkablePathSprite: {fileID: 21300000, guid: 04c93ae42bb8a7d06ad8f891717f2eca, type: 3}
+  _rightWalkablePathSprite: {fileID: 21300000, guid: 75f31fef02c1f072a934c82435e5d69f, type: 3}
   _propSpriteChance:
   - Sprite: {fileID: 21300000, guid: 5ba98182e75597e4d969025a6ccb2310, type: 3}
     Chance: 4
-  - Sprite: {fileID: 21300000, guid: eb55aadcaa269df41a0ad7dd0869f668, type: 3}
+  - Sprite: {fileID: 21300000, guid: 19fe8032ee0590e44b9d4676f8725a13, type: 3}
     Chance: 10
   - Sprite: {fileID: 21300000, guid: 7713caf5eec6884ac9ae18a0df815e6f, type: 3}
     Chance: 3

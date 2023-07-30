@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288079892320616362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 0.9, z: 0}
+  m_LocalPosition: {x: 1.58, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792027449266631169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.52, y: 2.3, z: 0}
+  m_LocalPosition: {x: 2.9, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -529,7 +529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5080320886195684410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.85, y: 2.25, z: 0}
+  m_LocalPosition: {x: -2.19, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -865,7 +865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668763725761786691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 0.9, z: 0}
+  m_LocalPosition: {x: -2.92, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -985,9 +985,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8616408099422061841}
   _feedBackPlayer: {fileID: 6479281643744304650}
   _landSpriteRenderers:
-  - {fileID: 8616408099422061841}
-  - {fileID: 600109860001855639}
-  - {fileID: 3962587314924114622}
   - {fileID: 13552419593092172}
   - {fileID: 4767290792769845410}
   - {fileID: 8083496061297389613}
@@ -999,6 +996,8 @@ MonoBehaviour:
   - {fileID: 1677572902570599082}
   - {fileID: 6749120955776935182}
   - {fileID: 9212828966435120604}
+  _leftWalkablePathSpriteRenderer: {fileID: 600109860001855639}
+  _rightWalkablePathSpriteRenderer: {fileID: 3962587314924114622}
 --- !u!114 &6479281643744304650
 MonoBehaviour:
   m_ObjectHideFlags: 0
