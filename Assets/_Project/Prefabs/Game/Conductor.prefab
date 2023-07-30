@@ -159,7 +159,7 @@ Transform:
   m_Children:
   - {fileID: 3621823460519008263}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4047566501775314432
 MonoBehaviour:
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83644baaac16ce680a603785cffa6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beatInfo: {fileID: 11400000, guid: 47e32509be2ac5d12a8d1e16a4c55e1b, type: 2}
   audioBPM: 120
-  initialTimeOffsetInMilliseconds: 0
-  audioStartTime: 0
+  InitialTimeOffsetInMilliseconds: 0
   musicSource: {fileID: 5984261443305925322}
-  beatThreshold: 200
+  _beatTickCheckThreshold: 100

@@ -21,25 +21,30 @@ namespace VoyageSandwich.World.Base
 
         private MMF_Position _positionFeedBack = new MMF_Position();
 
-        public void Initialize(T1 runtimeData)
+        public void Initialize(T1 runtimeData, float beatIntervalInSeconds)
         {
             base.Initialize();
 
             _runtimeData = runtimeData;
-            InitializeFeedbackPlayer();
+            InitializeFeedbackPlayer(beatIntervalInSeconds);
         }
 
-        private void InitializeFeedbackPlayer()
+        private void InitializeFeedbackPlayer(float beatIntervalInSeconds)
         {
             _feedBackPlayer.StopFeedbacks();
             _positionFeedBack.AnimatePositionTarget = gameObject;
             _positionFeedBack.RelativePosition = false;
             _positionFeedBack.DeterminePositionsOnPlay = true;
-            _positionFeedBack.FeedbackDuration = 0.1f;
+            _positionFeedBack.FeedbackDuration = beatIntervalInSeconds * 0.8f;
             _positionFeedBack.Space = MMF_Position.Spaces.Local;
             _positionFeedBack.AllowAdditivePlays = true;
 
             _feedBackPlayer.AddFeedback(_positionFeedBack);
+        }
+
+        public void SetSprite(Sprite newSprite)
+        {
+            _spriteRenderer.sprite = newSprite;
         }
 
         public virtual void MoveY(float newYPos)
@@ -49,7 +54,6 @@ namespace VoyageSandwich.World.Base
             _positionFeedBack.InitialPosition = currentPos;
             _positionFeedBack.DestinationPosition = new Vector3(currentPos.x, newYPos, currentPos.z);
             _feedBackPlayer.PlayFeedbacks();
-            
         }
 
         public virtual void Move(Vector3 newPosition)

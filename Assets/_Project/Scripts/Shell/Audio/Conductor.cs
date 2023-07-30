@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VoyageSandwich.Shell.Base;
+using VoyageSandwich.Shell.Game;
 
 namespace VoyageSandwich.Shell.Audio
 {
     public class Conductor : BaseComponent
     {
+        [SerializeField] private BeatInfo _beatInfo;
+        public BeatInfo BeatInfo => _beatInfo;
+
         public float audioBPM;
 
         public float InitialTimeOffsetInMilliseconds;
@@ -19,7 +23,7 @@ namespace VoyageSandwich.Shell.Audio
         //an AudioSource attached to this GameObject that will play the music.
         public AudioSource musicSource;
 
-        public float beatThreshold;
+        [SerializeField] private float _beatTickCheckThreshold;
 
         private int _previousBeatTime = 0;
         public int PrevBeatTime => _previousBeatTime;
@@ -49,7 +53,7 @@ namespace VoyageSandwich.Shell.Audio
             float songPositionInMilliseconds = GetSongPosition();
             int roundedBeatTime = GetRoundedBeatTime(songPositionInMilliseconds);
 
-            if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, _millisecondsPerBeat, beatThreshold))
+            if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, _millisecondsPerBeat, _beatTickCheckThreshold))
             {
                 _previousBeatTime = roundedBeatTime;
                 OnBeat?.Invoke(songPositionInMilliseconds);

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using VoyageSandwich.Shell.Base;
-using VoyageSandwitch.Shell.Enum;
 using MoreMountains.Feedbacks;
+using VoyageSandwich.Shell.Base;
+using VoyageSandwich.Shell.Enum;
 
-namespace VoyageSandwich.Core.Player
+namespace VoyageSandwich.Shell.Player
 {
     [RequireComponent(typeof(VoidListener))]
     [RequireComponent(typeof(IntListener))]
@@ -38,6 +36,8 @@ namespace VoyageSandwich.Core.Player
 
         private MMF_Position DashPositionFeedback = new MMF_Position();
         private Transform PlayerTransform => _anim.transform;
+
+        public PathPositionEnum PathPosition => _pathPosition;
         #endregion
 
         public override void Initialize()
@@ -69,14 +69,14 @@ namespace VoyageSandwich.Core.Player
 
         public void OnTap()
         {
-            Debug.Log("Attack");
+            // Debug.Log("Attack");
         }
 
         public void OnSwipe(int swipeDirection)
         {
             if (swipeDirection > 0)
             {
-                if(_pathPosition != PathPositionEnum.Right)
+                if (_pathPosition != PathPositionEnum.Right)
                 {
                     _swipeDirection = SwipeDirectionEnum.Right;
                     //PlayerTransform.position = new Vector2(PlayerTransform.position.x + 1, PlayerTransform.position.y);
@@ -92,10 +92,9 @@ namespace VoyageSandwich.Core.Player
                     DashFeedbacks.PlayFeedbacks();
                 }
             }
-
             else
             {
-                if(_pathPosition != PathPositionEnum.Left)
+                if (_pathPosition != PathPositionEnum.Left)
                 {
                     _swipeDirection = SwipeDirectionEnum.Left;
                     //PlayerTransform.position = new Vector2(PlayerTransform.position.x - 1, PlayerTransform.position.y);

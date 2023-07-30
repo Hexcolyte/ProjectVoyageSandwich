@@ -47,3 +47,5 @@ MonoBehaviour:
   _objectPrefab: {fileID: 8704640990139492884, guid: 04ababa7d1fbdde25aa5e354f10a3463, type: 3}
   _positionOffset: 1
   _anchorTransform: {fileID: 0}
+  ChanceToSpawnPerStep: 40
+  EnemyLibrary: {fileID: 11400000, guid: 535e41c3d74727e6b912b6d73a7b8739, type: 2}

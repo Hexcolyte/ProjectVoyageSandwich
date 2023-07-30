@@ -2,7 +2,8 @@
     "name": "Shell.Enemy",
     "rootNamespace": "",
     "references": [
-        "GUID:7643070f73d5fed95be00a01c8067632"
+        "GUID:7643070f73d5fed95be00a01c8067632",
+        "GUID:f9a7f6ebfa6f20b4eae0e287da46d86b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
