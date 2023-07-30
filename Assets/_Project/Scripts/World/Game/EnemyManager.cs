@@ -128,9 +128,9 @@ namespace VoyageSandwich.World.Game
 
             enemyObject.Initialize(newRuntimeData, _conductor.SecondsPerBeat);
 
-            if (EnemyLibrary.TryGetPossibleSprites(enemyType, out Sprite[] enemySprites))
+            if (EnemyLibrary.TryGetPossibleAnimation(enemyType, out AnimatorOverrideController enemyAnimatorController))
             {
-                enemyObject.SetSprite(enemySprites[Random.Range(0, enemySprites.Length)]);
+                enemyObject.SetSpriteAnimation(enemyAnimatorController);
             }
         }
 
@@ -169,22 +169,25 @@ namespace VoyageSandwich.World.Game
                         return false;
 
                     enemyObject = LeftLandQueue.Peek();
-                    return true;
+                    break;
 
                 case PathPositionEnum.Center:
                     if (CenterLandQueue.Count == 0)
                         return false;
 
                     enemyObject = CenterLandQueue.Peek();
-                    return true;
+                    break;
 
                 case PathPositionEnum.Right:
                     if (RightLandQueue.Count == 0)
                         return false;
 
                     enemyObject = RightLandQueue.Peek();
-                    return true;
+                    break;
             }
+
+            if (enemyObject != null && enemyObject.RuntimeData.EnemyType != EnemyTypeEnum.Obstacle)
+                return true;
 
             return false;
         }

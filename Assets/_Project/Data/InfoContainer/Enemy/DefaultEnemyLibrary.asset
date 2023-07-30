@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyTypeLibrary:
   - EnemyType: 1
-    Sprites:
-    - {fileID: 21300000, guid: 0685b25a5c87690038f827f02d0bfd07, type: 3}
+    AnimatorController: {fileID: 22100000, guid: 33105ad107358ebfba2898cf5f5b49fa, type: 2}
   - EnemyType: 2
-    Sprites:
-    - {fileID: 21300000, guid: eb55aadcaa269df41a0ad7dd0869f668, type: 3}
+    AnimatorController: {fileID: 22100000, guid: 1cca74dbf8c56f8d89dde969e2865b54, type: 2}

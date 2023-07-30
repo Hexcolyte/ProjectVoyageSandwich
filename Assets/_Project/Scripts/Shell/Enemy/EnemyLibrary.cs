@@ -9,14 +9,14 @@ namespace VoyageSandwich.Shell.Enemy
         [SerializeField] private EnemyTypeInfo[] _enemyTypeLibrary;
         public EnemyTypeInfo[] EnemyTypeLibrary => _enemyTypeLibrary;
 
-        public bool TryGetPossibleSprites(EnemyTypeEnum enemyType, out Sprite[] sprites)
+        public bool TryGetPossibleAnimation(EnemyTypeEnum enemyType, out AnimatorOverrideController animatorController)
         {
-            sprites = null;
+            animatorController = null;
             foreach(EnemyTypeInfo typeInfo in _enemyTypeLibrary)
             {
                 if (typeInfo.EnemyType == enemyType)
                 {
-                    sprites = typeInfo.Sprites;
+                    animatorController = typeInfo.AnimatorController;
                     return true;
                 }
             }
@@ -29,6 +29,6 @@ namespace VoyageSandwich.Shell.Enemy
     public class EnemyTypeInfo
     {
         public EnemyTypeEnum EnemyType;
-        public Sprite[] Sprites;
+        public AnimatorOverrideController AnimatorController;
     }
 }
