@@ -62,7 +62,7 @@ namespace VoyageSandwich.World.Game
             landObject.Move(_anchorPosition + new Vector3(0f, yOffset, 0f));
             _existingObjectQueue.Enqueue(landObject);
 
-            landObject.SetSprite(_worldSpriteInfo.LandSprite, _worldSpriteInfo.PropSpriteChance);
+            landObject.SetSprite(_worldSpriteInfo);
             landObject.Initialize(new LandObjectRuntimeData(0f), _conductor.SecondsPerBeat);
         }
 
