@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VoyageSandwich.Shell.Audio
@@ -18,7 +16,7 @@ namespace VoyageSandwich.Shell.Audio
 
         public static float GetSongPositionInMilliseconds(float secondsPerBeat, float startTime, float initialTimeOffsetInMilliseconds)
         {
-            return (float) (AudioSettings.dspTime - startTime) * 1000f;
+            return (float) (AudioSettings.dspTime - startTime - initialTimeOffsetInMilliseconds) * 1000f;
         }
 
         public static bool IsOnBeat(float songPositionInMilliseconds, float timeIntervalPerBeatInMilliseconds, float timeOffsetThreshold)

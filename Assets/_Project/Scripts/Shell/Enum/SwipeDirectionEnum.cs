@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VoyageSandwitch.Shell.Enum
+namespace VoyageSandwich.Shell.Enum
 {
     public enum SwipeDirectionEnum
     {

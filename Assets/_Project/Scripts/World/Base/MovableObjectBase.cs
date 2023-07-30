@@ -42,6 +42,11 @@ namespace VoyageSandwich.World.Base
             _feedBackPlayer.AddFeedback(_positionFeedBack);
         }
 
+        public void SetSprite(Sprite newSprite)
+        {
+            _spriteRenderer.sprite = newSprite;
+        }
+
         public virtual void MoveY(float newYPos)
         {
             Vector3 currentPos = transform.localPosition;
@@ -49,7 +54,6 @@ namespace VoyageSandwich.World.Base
             _positionFeedBack.InitialPosition = currentPos;
             _positionFeedBack.DestinationPosition = new Vector3(currentPos.x, newYPos, currentPos.z);
             _feedBackPlayer.PlayFeedbacks();
-            
         }
 
         public virtual void Move(Vector3 newPosition)

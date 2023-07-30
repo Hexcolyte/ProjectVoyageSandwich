@@ -4,7 +4,7 @@ using UnityEngine;
 using VoyageSandwich.World.Game;
 using VoyageSandwich.Shell.Base;
 using VoyageSandwich.Shell.Audio;
-using VoyageSandwich.Core.Player;
+using VoyageSandwich.Shell.Player;
 
 namespace VoyageSandwich.Core.Main
 {
@@ -16,6 +16,8 @@ namespace VoyageSandwich.Core.Main
         [SerializeField] private EnemyManager _enemyManager;
         [SerializeField] private Conductor _conductor;
         [SerializeField] private PlayerController _playerController;
+        [SerializeField] private ScoreManager _scoreManager;
+        [SerializeField] private BeatInputListener _beatInputListener;
 
         public void StartOrchestrating()
         {
@@ -23,19 +25,22 @@ namespace VoyageSandwich.Core.Main
             _cameraController.Initialize();
             _landManager.Initialize(_cameraController, _conductor);
             _enemyManager.Initialize(_cameraController, _conductor);
-            _conductor.Initialize();
+            _scoreManager.Initialize(_conductor, _playerController, _beatInputListener, _enemyManager);
             _playerController.Initialize();
+            _beatInputListener.Initialize();
         }
 
         private void Update()
         {
             float deltaTime = Time.deltaTime;
 
+            _conductor.Tick(deltaTime);
             _cameraController.Tick(deltaTime);
             _landManager.Tick(deltaTime);
             _enemyManager.Tick(deltaTime);
-            _conductor.Tick(deltaTime);
+            _scoreManager.Tick(deltaTime);
             _playerController.Tick(deltaTime);
+            _beatInputListener.Tick(deltaTime);
         }
     }
 }

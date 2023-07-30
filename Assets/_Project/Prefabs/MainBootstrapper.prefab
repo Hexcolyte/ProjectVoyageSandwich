@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4064696820711074162}
   - component: {fileID: 5222804312992717362}
   - component: {fileID: 2484778210143233690}
-  - component: {fileID: 7264979002119876873}
+  - component: {fileID: 1858862209542194171}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -109,8 +109,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3898526974100510777}
-        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.BeatInputListener, Core.Main
+      - m_Target: {fileID: 1778414457081592123}
+        m_TargetAssemblyTypeName: VoyageSandwich.World.Game.BeatInputListener, World.Game
         m_MethodName: ProcessInput
         m_Mode: 1
         m_Arguments:
@@ -149,6 +149,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1778414457081592123}
+        m_TargetAssemblyTypeName: VoyageSandwich.World.Game.BeatInputListener, World.Game
+        m_MethodName: ProcessInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2484778210143233690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,12 +170,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1518449973074623794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58ed867789807d147981d6b4515621a5, type: 3}
+  m_Script: {fileID: 11500000, guid: fff2a5f05cf43b6dcb49c8233efb2003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashDuration: 0.2
+  _dashDuration: 0.1
   _anim: {fileID: 0}
---- !u!114 &7264979002119876873
+  DashFeedbacks: {fileID: 1858862209542194171}
+--- !u!114 &1858862209542194171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,11 +185,93 @@ MonoBehaviour:
   m_GameObject: {fileID: 1518449973074623794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conductor: {fileID: 8990924585957191328}
-  _beatThreshold: 200
+  Feedbacks: []
+  InitializationMode: 2
+  AutoInitialization: 1
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  RandomizeDuration: 0
+  RandomDurationMultiplier: {x: 0.5, y: 1.5}
+  DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
+  OnlyPlayIfWithinRange: 0
+  RangeCenter: {fileID: 0}
+  RangeDistance: 5
+  UseRangeFalloff: 0
+  RangeFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RemapRangeFalloff: {x: 0, y: 1}
+  IgnoreRangeEvents: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlay: 1
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  FeedbacksList: []
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  StopFeedbacksOnDisable: 0
+  PlayCount: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &6440410075373147269
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6935305447202160941}
-  - component: {fileID: 3898526974100510777}
+  - component: {fileID: 1778414457081592123}
   m_Layer: 0
   m_Name: BeatInputListener
   m_TagString: Untagged
@@ -209,7 +304,7 @@ Transform:
   m_Father: {fileID: 2581057791223914235}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3898526974100510777
+--- !u!114 &1778414457081592123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,11 +313,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 6440410075373147269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Script: {fileID: 11500000, guid: fe98bfee66f7ef232974b34e9a27bc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _conductor: {fileID: 8990924585957191328}
-  _beatThreshold: 200
+  _perfectBeatThreshold: 100
+  _acceptableBeatThreshold: 200
+--- !u!1 &8159647593640373580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6781597649642108024}
+  - component: {fileID: 5909389307556150533}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6781597649642108024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159647593640373580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2581057791223914235}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5909389307556150533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159647593640373580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b50f6cce8fdfadbc16ca36a3bd5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1495866612877076320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,10 +517,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2581057791223914235}
     m_Modifications:
-    - target: {fileID: -3721090384810719012, guid: b7ee6e738cd8503e88709c6e28dd8422, type: 3}
-      propertyPath: _objectPrefab
-      value: 
-      objectReference: {fileID: 8381308191930084598, guid: 066e3973f6456558aacb1fe32994e4be, type: 3}
     - target: {fileID: 967996526419548744, guid: b7ee6e738cd8503e88709c6e28dd8422, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -548,6 +684,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8823862564625081229}
     - target: {fileID: 5013365521443657842, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      propertyPath: _scoreManager
+      value: 
+      objectReference: {fileID: 5909389307556150533}
+    - target: {fileID: 5013365521443657842, guid: c37e1b66335917c83945c93de222e045, type: 3}
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 5967112284593507080}
@@ -555,6 +695,10 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 2484778210143233690}
+    - target: {fileID: 5013365521443657842, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      propertyPath: _beatInputListener
+      value: 
+      objectReference: {fileID: 1778414457081592123}
     - target: {fileID: 8552755080159792268, guid: c37e1b66335917c83945c93de222e045, type: 3}
       propertyPath: m_Name
       value: MainBootstrapper
@@ -627,6 +771,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6935305447202160941}
+    - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6781597649642108024}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c37e1b66335917c83945c93de222e045, type: 3}
 --- !u!4 &2581057791223914235 stripped

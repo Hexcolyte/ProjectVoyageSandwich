@@ -57,13 +57,24 @@ namespace VoyageSandwich.World.Game
             T1 firstObj = _existingObjectQueue.Peek();
             if (firstObj.CurrentYPos <= FinalYPos)
             {
-                T1 objToBeRemoved = _existingObjectQueue.Dequeue();
-                _objectPool.Release(objToBeRemoved);
-
-                OnLastObjectScrollEnded();
+                if (RemoveObject(out T1 objToBeRemoved))
+                    OnLastObjectScrollEnded(objToBeRemoved);
             }
         }
 
-        protected abstract void OnLastObjectScrollEnded();
+        protected virtual bool RemoveObject(out T1 objToBeRemoved)
+        {
+            objToBeRemoved = null;
+
+            if (_existingObjectQueue.Count == 0)
+                return false;
+
+            objToBeRemoved = _existingObjectQueue.Dequeue();
+            _objectPool.Release(objToBeRemoved);
+
+            return true;
+        }
+
+        protected abstract void OnLastObjectScrollEnded(T1 lastRemovedObject);
     }
 }

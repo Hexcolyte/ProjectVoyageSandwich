@@ -66,7 +66,7 @@ namespace VoyageSandwich.World.Game
             landObject.Initialize(new LandObjectRuntimeData(0f));
         }
 
-        protected override void OnLastObjectScrollEnded()
+        protected override void OnLastObjectScrollEnded(LandObject lastRemovedObject)
         {
             SpawnLand();
         }

@@ -17,12 +17,6 @@ namespace VoyageSandwich.Shell.Input
         [SerializeField]
         private IntEvent _swipeEvent;
 
-        private void Awake()
-        {
-            Application.targetFrameRate = 0;
-            //_playerControls = new IA_PlayerControls();
-        }
-
         private void OnEnable()
         {
             //_playerControls?.Enable();
@@ -39,7 +33,6 @@ namespace VoyageSandwich.Shell.Input
         private void HandleOnTap(LeanFinger finger)
         {
             Debug.Log($"{nameof(InputManager)} Tap Action");
-            Debug.Log(finger.SwipeScaledDelta);
 
             _touchEvent?.Raise();
         }
