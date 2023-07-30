@@ -22,6 +22,8 @@ namespace VoyageSandwich.Shell.Audio
         public float beatThreshold;
 
         private int _previousBeatTime = 0;
+        public int PrevBeatTime => _previousBeatTime;
+
         private float _millisecondsPerBeat;
         public float MillisecondsPerBeat { get { return _millisecondsPerBeat; } }
 
@@ -44,7 +46,7 @@ namespace VoyageSandwich.Shell.Audio
         public override void Tick(float deltaTime)
         {
             float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(_millisecondsPerBeat, _audioStartTime, InitialTimeOffsetInMilliseconds);
-            int roundedBeatTime = Mathf.FloorToInt(songPositionInMilliseconds / _millisecondsPerBeat);
+            int roundedBeatTime = GetRoundedBeatTime(songPositionInMilliseconds);
 
             if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, _millisecondsPerBeat, beatThreshold))
             {
@@ -52,5 +54,7 @@ namespace VoyageSandwich.Shell.Audio
                 OnBeat?.Invoke();
             }
         }
+
+        public int GetRoundedBeatTime(float songPositionInMilliseconds) => Mathf.FloorToInt(songPositionInMilliseconds / _millisecondsPerBeat);
     }
 }

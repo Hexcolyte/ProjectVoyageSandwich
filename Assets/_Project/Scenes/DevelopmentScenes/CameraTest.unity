@@ -198,6 +198,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &229922084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
+  m_PrefabInstance: {fileID: 673713568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83644baaac16ce680a603785cffa6e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &251966789
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +255,7 @@ GameObject:
   - component: {fileID: 653230779}
   - component: {fileID: 653230782}
   - component: {fileID: 653230783}
+  - component: {fileID: 653230784}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -359,6 +371,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 653230784}
+        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.BeatInputListener, Core.Main
+        m_MethodName: ProcessInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &653230781
 Animator:
   serializedVersion: 5
@@ -398,7 +422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 653230779}
         m_TargetAssemblyTypeName: VoyageSandwich.World.Player.PlayerController, World.Player
-        m_MethodName: onSwipe
+        m_MethodName: OnSwipe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,6 +446,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
   _swipeEvent: {fileID: 11400000, guid: 725d39d276478cb4f8540e28f7aded9c, type: 2}
+--- !u!114 &653230784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653230776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conductor: {fileID: 229922084}
+  _beatThreshold: 200
 --- !u!1001 &673713568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -526,6 +564,14 @@ PrefabInstance:
       propertyPath: _anchorTransform
       value: 
       objectReference: {fileID: 251966790}
+    - target: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
+      propertyPath: audioBPM
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
+      propertyPath: beatThreshold
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

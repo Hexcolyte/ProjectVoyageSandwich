@@ -4,7 +4,7 @@ using UnityEngine;
 using VoyageSandwich.World.Game;
 using VoyageSandwich.Shell.Base;
 using VoyageSandwich.Shell.Audio;
-using VoyageSandwich.World.Player;
+using VoyageSandwich.Core.Player;
 
 namespace VoyageSandwich.Core.Main
 {
