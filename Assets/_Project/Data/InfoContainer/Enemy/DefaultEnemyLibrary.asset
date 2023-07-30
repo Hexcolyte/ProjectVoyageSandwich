@@ -17,3 +17,5 @@ MonoBehaviour:
     AnimatorController: {fileID: 22100000, guid: 33105ad107358ebfba2898cf5f5b49fa, type: 2}
   - EnemyType: 2
     AnimatorController: {fileID: 22100000, guid: 1cca74dbf8c56f8d89dde969e2865b54, type: 2}
+  - EnemyType: 1
+    AnimatorController: {fileID: 22100000, guid: 729039c4e8d16ca6c9ac1b6d4c6a485a, type: 2}
