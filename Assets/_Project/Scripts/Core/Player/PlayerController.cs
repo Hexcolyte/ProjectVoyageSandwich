@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VoyageSandwich.Shell.Base;
 using VoyageSandwitch.Shell.Enum;
+using MoreMountains.Feedbacks;
 
 namespace VoyageSandwich.Core.Player
 {
@@ -19,6 +20,8 @@ namespace VoyageSandwich.Core.Player
         private float _dashDuration;
         [SerializeField]
         private Animator _anim;
+        [SerializeField]
+        MMF_Player DashFeedbacks;
         #endregion
 
         #region Private Variables
@@ -32,6 +35,8 @@ namespace VoyageSandwich.Core.Player
         private int _currentState = 0;
         private float _lockedTill;
         private bool _isDashing;
+
+        private MMF_Position DashPositionFeedback = new MMF_Position();
         private Transform PlayerTransform => _anim.transform;
         #endregion
 
@@ -41,6 +46,13 @@ namespace VoyageSandwich.Core.Player
             {
                 _anim.CrossFade(Idle, 0f);
             }
+
+            DashFeedbacks.AddFeedback(DashPositionFeedback);
+            DashPositionFeedback.AnimatePositionTarget = PlayerTransform.gameObject;
+            DashPositionFeedback.RelativePosition = false;
+            DashPositionFeedback.DeterminePositionsOnPlay = true;
+            DashPositionFeedback.FeedbackDuration = _dashDuration;
+
         }
 
         public override void Tick(float deltaTime)
@@ -67,11 +79,17 @@ namespace VoyageSandwich.Core.Player
                 if(_pathPosition != PathPositionEnum.Right)
                 {
                     _swipeDirection = SwipeDirectionEnum.Right;
-                    PlayerTransform.position = new Vector2(PlayerTransform.position.x + 1, PlayerTransform.position.y);
+                    //PlayerTransform.position = new Vector2(PlayerTransform.position.x + 1, PlayerTransform.position.y);
                     _isDashing = true;
 
-                    if (PlayerTransform.position.x == 0) _pathPosition = PathPositionEnum.Center;
+                    Vector3 playerDestination = PlayerTransform.position + Vector3.right;
+
+                    if (playerDestination.x == 0) _pathPosition = PathPositionEnum.Center;
                     else _pathPosition = PathPositionEnum.Right;
+
+                    DashPositionFeedback.InitialPosition = PlayerTransform.position;
+                    DashPositionFeedback.DestinationPosition = playerDestination;
+                    DashFeedbacks.PlayFeedbacks();
                 }
             }
 
@@ -80,11 +98,16 @@ namespace VoyageSandwich.Core.Player
                 if(_pathPosition != PathPositionEnum.Left)
                 {
                     _swipeDirection = SwipeDirectionEnum.Left;
-                    PlayerTransform.position = new Vector2(PlayerTransform.position.x - 1, PlayerTransform.position.y);
+                    //PlayerTransform.position = new Vector2(PlayerTransform.position.x - 1, PlayerTransform.position.y);
                     _isDashing = true;
+                    Vector3 playerDestination = PlayerTransform.position - Vector3.right;
 
-                    if (PlayerTransform.position.x == 0) _pathPosition = PathPositionEnum.Center;
+                    if (playerDestination.x == 0) _pathPosition = PathPositionEnum.Center;
                     else _pathPosition = PathPositionEnum.Left;
+
+                    DashPositionFeedback.InitialPosition = PlayerTransform.position;
+                    DashPositionFeedback.DestinationPosition = playerDestination;
+                    DashFeedbacks.PlayFeedbacks();
                 }
             }
 
