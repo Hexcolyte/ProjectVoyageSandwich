@@ -17,10 +17,11 @@ namespace VoyageSandwich.Core.Player
         #region Serialized Fields
         [SerializeField]
         private float _dashDuration;
+        [SerializeField]
+        private Animator _anim;
         #endregion
 
         #region Private Variables
-        private Animator _anim;
         private VoidListener _tapInputListener;
         private IntListener _swipeInputListener;
         
@@ -31,12 +32,11 @@ namespace VoyageSandwich.Core.Player
         private int _currentState = 0;
         private float _lockedTill;
         private bool _isDashing;
+        private Transform PlayerTransform => _anim.transform;
         #endregion
 
         public override void Initialize()
         {
-            _anim = GetComponent<Animator>();
-
             if(_anim)
             {
                 _anim.CrossFade(Idle, 0f);
@@ -67,10 +67,10 @@ namespace VoyageSandwich.Core.Player
                 if(_pathPosition != PathPositionEnum.Right)
                 {
                     _swipeDirection = SwipeDirectionEnum.Right;
-                    transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+                    PlayerTransform.position = new Vector2(PlayerTransform.position.x + 1, PlayerTransform.position.y);
                     _isDashing = true;
 
-                    if (transform.position.x == 0) _pathPosition = PathPositionEnum.Center;
+                    if (PlayerTransform.position.x == 0) _pathPosition = PathPositionEnum.Center;
                     else _pathPosition = PathPositionEnum.Right;
                 }
             }
@@ -80,10 +80,10 @@ namespace VoyageSandwich.Core.Player
                 if(_pathPosition != PathPositionEnum.Left)
                 {
                     _swipeDirection = SwipeDirectionEnum.Left;
-                    transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+                    PlayerTransform.position = new Vector2(PlayerTransform.position.x - 1, PlayerTransform.position.y);
                     _isDashing = true;
 
-                    if (transform.position.x == 0) _pathPosition = PathPositionEnum.Center;
+                    if (PlayerTransform.position.x == 0) _pathPosition = PathPositionEnum.Center;
                     else _pathPosition = PathPositionEnum.Left;
                 }
             }

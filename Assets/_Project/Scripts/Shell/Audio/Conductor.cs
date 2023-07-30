@@ -14,7 +14,7 @@ namespace VoyageSandwich.Shell.Audio
 
         //How many seconds have passed since the song started
         private float _audioStartTime;
-        public float AudioStartTime {  get { return _audioStartTime; } }
+        public float AudioStartTime => _audioStartTime;
 
         //an AudioSource attached to this GameObject that will play the music.
         public AudioSource musicSource;
@@ -25,13 +25,14 @@ namespace VoyageSandwich.Shell.Audio
         public int PrevBeatTime => _previousBeatTime;
 
         private float _millisecondsPerBeat;
-        public float MillisecondsPerBeat { get { return _millisecondsPerBeat; } }
+        public float MillisecondsPerBeat => _millisecondsPerBeat;
+        public float SecondsPerBeat => _millisecondsPerBeat / 1000f;
 
-        public event Action OnBeat;
+        public event Action<float> OnBeat;
 
         public override void Initialize()
         {
-            double initTime = AudioSettings.dspTime;
+            double initTime = AudioSettings.dspTime + (InitialTimeOffsetInMilliseconds / 1000f);
 
             //Calculate the number of seconds in each beat
             _millisecondsPerBeat = AudioClock.GetTimeIntervalsPerBeat(audioBPM);
@@ -45,16 +46,21 @@ namespace VoyageSandwich.Shell.Audio
 
         public override void Tick(float deltaTime)
         {
-            float songPositionInMilliseconds = AudioClock.GetSongPositionInMilliseconds(_millisecondsPerBeat, _audioStartTime, InitialTimeOffsetInMilliseconds);
+            float songPositionInMilliseconds = GetSongPosition();
             int roundedBeatTime = GetRoundedBeatTime(songPositionInMilliseconds);
 
             if (_previousBeatTime < roundedBeatTime && AudioClock.IsAfterBeat(songPositionInMilliseconds, _millisecondsPerBeat, beatThreshold))
             {
                 _previousBeatTime = roundedBeatTime;
-                OnBeat?.Invoke();
+                OnBeat?.Invoke(songPositionInMilliseconds);
             }
         }
 
         public int GetRoundedBeatTime(float songPositionInMilliseconds) => Mathf.FloorToInt(songPositionInMilliseconds / _millisecondsPerBeat);
+
+        public float GetSongPosition()
+        {
+            return AudioClock.GetSongPositionInMilliseconds(_millisecondsPerBeat, _audioStartTime, InitialTimeOffsetInMilliseconds);
+        }
     }
 }

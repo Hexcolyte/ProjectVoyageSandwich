@@ -5,7 +5,7 @@ using VoyageSandwich.Shell.Audio;
 
 namespace VoyageSandwich.World.Game
 {
-    public class LandManager: ScrollerComponentBase<LandObject>
+    public class LandManager: ScrollerComponentBase<LandObject, LandObjectRuntimeData>
     {
         [SerializeField] private WorldSpriteInfo _worldSpriteInfo;
 
@@ -13,6 +13,7 @@ namespace VoyageSandwich.World.Game
         [SerializeField] private int _initialLandObjectCount = 4;
 
         private CameraController _cameraController;
+        private Conductor _conductor;
 
         protected override float FinalYPos => _anchorPosition.y;
 
@@ -21,10 +22,11 @@ namespace VoyageSandwich.World.Game
             base.Initialize();
 
             _cameraController = cameraController;
+            _conductor = conductor;
 
+            _conductor.OnBeat += OnBeat;
+            
             InitialSetupWorld();
-
-            conductor.OnBeat += OnBeat;
         }
 
         private void InitialSetupWorld()
@@ -35,7 +37,7 @@ namespace VoyageSandwich.World.Game
             }
         }
 
-        private void OnBeat()
+        private void OnBeat(float _)
         {
             MoveOneStep();
 

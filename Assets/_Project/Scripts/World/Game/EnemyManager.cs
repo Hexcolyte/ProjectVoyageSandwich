@@ -2,28 +2,32 @@ using System.Collections;
 using UnityEngine;
 using VoyageSandwich.World.Enemy;
 using VoyageSandwich.Shell.Audio;
+using VoyageSandwich.Shell.Enemy;
 
 namespace VoyageSandwich.World.Game
 {
-    public class EnemyManager: ScrollerComponentBase<EnemyObject>
+    public class EnemyManager: ScrollerComponentBase<EnemyObject, EnemyObjectRuntimeData>
     {
         protected override float FinalYPos => _anchorPosition.y;
+        protected override float CurrentSongTime => _conductor.GetSongPosition();
 
         private CameraController _cameraController;
+        private Conductor _conductor;
 
         public void Initialize(CameraController cameraController, Conductor conductor)
         {
             base.Initialize();
 
             _cameraController = cameraController;
+            _conductor = conductor;
 
-            conductor.OnBeat += OnBeat;
+            _conductor.OnBeat += OnBeat;
         }
 
-        private void OnBeat()
+        private void OnBeat(float songPositionInMilliseconds)
         {
             if (Random.Range(0,5) == 0)
-                SpawnEnemy();
+                SpawnEnemy(songPositionInMilliseconds);
 
             MoveOneStep();
         }
@@ -45,7 +49,7 @@ namespace VoyageSandwich.World.Game
             }
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(float songPositionInMilliseconds)
         {
             EnemyObject enemyObject = _objectPool.Get();
 
@@ -54,6 +58,12 @@ namespace VoyageSandwich.World.Game
             enemyObject.Move(new Vector3(0f, maxDistanceUnit - _positionOffset, 0f));
 
             _existingObjectQueue.Enqueue(enemyObject);
+
+            float songPositionInSeconds = songPositionInMilliseconds / 1000f;
+            float targetSongPosition = (float)songPositionInSeconds + (_conductor.SecondsPerBeat * 8f);
+
+            EnemyObjectRuntimeData newRuntimeData = new EnemyObjectRuntimeData(targetSongPosition, targetSongPosition + (_conductor.beatThreshold / 1000f / 2f));
+            enemyObject.Initialize(newRuntimeData);
         }
 
         protected override void OnLastObjectScrollEnded()

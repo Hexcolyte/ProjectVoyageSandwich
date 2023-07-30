@@ -1,5 +1,5 @@
 {
-    "name": "Shell.Environment",
+    "name": "Shell.Enemy",
     "rootNamespace": "",
     "references": [
         "GUID:7643070f73d5fed95be00a01c8067632"

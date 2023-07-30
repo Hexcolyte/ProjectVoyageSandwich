@@ -5,7 +5,7 @@ using VoyageSandwich.Shell.Environment;
 
 namespace VoyageSandwich.World.Environment
 {
-    public class LandObject : MovableObjectBase
+    public class LandObject : MovableObjectBase<LandObjectRuntimeData>
     {
         [SerializeField] private SpriteRenderer[] _landSpriteRenderers;
         [SerializeField] private SpriteRenderer[] _propSpriteRenderers;

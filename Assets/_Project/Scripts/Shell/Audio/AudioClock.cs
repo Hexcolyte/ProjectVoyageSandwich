@@ -18,7 +18,7 @@ namespace VoyageSandwich.Shell.Audio
 
         public static float GetSongPositionInMilliseconds(float secondsPerBeat, float startTime, float initialTimeOffsetInMilliseconds)
         {
-            return (float) (AudioSettings.dspTime - startTime - initialTimeOffsetInMilliseconds) * 1000;
+            return (float) (AudioSettings.dspTime - startTime) * 1000f;
         }
 
         public static bool IsOnBeat(float songPositionInMilliseconds, float timeIntervalPerBeatInMilliseconds, float timeOffsetThreshold)

@@ -198,17 +198,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &229922084 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8990924585957191328, guid: 243180fa306d753299a6dbc7281de427, type: 3}
-  m_PrefabInstance: {fileID: 673713568}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83644baaac16ce680a603785cffa6e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &251966789
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,11 +240,6 @@ GameObject:
   - component: {fileID: 653230777}
   - component: {fileID: 653230778}
   - component: {fileID: 653230781}
-  - component: {fileID: 653230780}
-  - component: {fileID: 653230779}
-  - component: {fileID: 653230782}
-  - component: {fileID: 653230783}
-  - component: {fileID: 653230784}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -330,59 +314,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &653230779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653230776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58ed867789807d147981d6b4515621a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dashDuration: 0.2
---- !u!114 &653230780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653230776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bea5fa9f768be499594fe0b8f5d6f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 653230779}
-        m_TargetAssemblyTypeName: VoyageSandwich.World.Player.PlayerController, World.Player
-        m_MethodName: OnTap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 653230784}
-        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.BeatInputListener, Core.Main
-        m_MethodName: ProcessInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &653230781
 Animator:
   serializedVersion: 5
@@ -404,62 +335,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &653230782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653230776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ff1c9a5bfc0874cb69ada2975ce5e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 725d39d276478cb4f8540e28f7aded9c, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 653230779}
-        m_TargetAssemblyTypeName: VoyageSandwich.World.Player.PlayerController, World.Player
-        m_MethodName: OnSwipe
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &653230783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653230776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a99a4eca7bf0a741a12580d03ba1fb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _touchEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
-  _swipeEvent: {fileID: 11400000, guid: 725d39d276478cb4f8540e28f7aded9c, type: 2}
---- !u!114 &653230784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653230776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _conductor: {fileID: 229922084}
-  _beatThreshold: 200
 --- !u!1001 &673713568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468,10 +343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2083975839967737885, guid: 243180fa306d753299a6dbc7281de427, type: 3}
-      propertyPath: _playerController
+    - target: {fileID: 2484778210143233690, guid: 243180fa306d753299a6dbc7281de427, type: 3}
+      propertyPath: _anim
       value: 
-      objectReference: {fileID: 653230779}
+      objectReference: {fileID: 653230781}
     - target: {fileID: 2581057791223914235, guid: 243180fa306d753299a6dbc7281de427, type: 3}
       propertyPath: m_RootOrder
       value: 0

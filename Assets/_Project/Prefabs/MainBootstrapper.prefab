@@ -1,5 +1,228 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &865963624663172958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7971665944494187135}
+  - component: {fileID: 5740577691186155603}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7971665944494187135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865963624663172958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2581057791223914235}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5740577691186155603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865963624663172958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a99a4eca7bf0a741a12580d03ba1fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
+  _swipeEvent: {fileID: 11400000, guid: 725d39d276478cb4f8540e28f7aded9c, type: 2}
+--- !u!1 &1518449973074623794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3256177975971423324}
+  - component: {fileID: 4064696820711074162}
+  - component: {fileID: 5222804312992717362}
+  - component: {fileID: 2484778210143233690}
+  - component: {fileID: 7264979002119876873}
+  m_Layer: 0
+  m_Name: PlayerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3256177975971423324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518449973074623794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2581057791223914235}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4064696820711074162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518449973074623794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bea5fa9f768be499594fe0b8f5d6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6fb0ab25fdda91d458589893dcb8d8cf, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2484778210143233690}
+        m_TargetAssemblyTypeName: VoyageSandwich.World.Player.PlayerController, World.Player
+        m_MethodName: OnTap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3898526974100510777}
+        m_TargetAssemblyTypeName: VoyageSandwich.Core.Main.BeatInputListener, Core.Main
+        m_MethodName: ProcessInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5222804312992717362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518449973074623794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ff1c9a5bfc0874cb69ada2975ce5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 725d39d276478cb4f8540e28f7aded9c, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2484778210143233690}
+        m_TargetAssemblyTypeName: VoyageSandwich.World.Player.PlayerController, World.Player
+        m_MethodName: OnSwipe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2484778210143233690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518449973074623794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ed867789807d147981d6b4515621a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dashDuration: 0.2
+  _anim: {fileID: 0}
+--- !u!114 &7264979002119876873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518449973074623794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conductor: {fileID: 8990924585957191328}
+  _beatThreshold: 200
+--- !u!1 &6440410075373147269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6935305447202160941}
+  - component: {fileID: 3898526974100510777}
+  m_Layer: 0
+  m_Name: BeatInputListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6935305447202160941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440410075373147269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2581057791223914235}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3898526974100510777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440410075373147269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1ef4daed5b4234e9074abb0af29276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conductor: {fileID: 8990924585957191328}
+  _beatThreshold: 200
 --- !u!1001 &1495866612877076320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,6 +551,10 @@ PrefabInstance:
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 5967112284593507080}
+    - target: {fileID: 5013365521443657842, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 2484778210143233690}
     - target: {fileID: 8552755080159792268, guid: c37e1b66335917c83945c93de222e045, type: 3}
       propertyPath: m_Name
       value: MainBootstrapper
@@ -391,6 +618,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5297066290926058216}
+    - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3256177975971423324}
+    - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7971665944494187135}
+    - targetCorrespondingSourceObject: {fileID: 8838608936785755796, guid: c37e1b66335917c83945c93de222e045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6935305447202160941}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c37e1b66335917c83945c93de222e045, type: 3}
 --- !u!4 &2581057791223914235 stripped

@@ -19,6 +19,7 @@ namespace VoyageSandwich.Core.Main
 
         public void StartOrchestrating()
         {
+            _conductor.Initialize();
             _cameraController.Initialize();
             _landManager.Initialize(_cameraController, _conductor);
             _enemyManager.Initialize(_cameraController, _conductor);

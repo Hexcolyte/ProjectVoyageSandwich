@@ -8,27 +8,30 @@ using VoyageSandwich.Shell.Environment;
 
 namespace VoyageSandwich.World.Game
 {
-    public abstract class ScrollerComponentBase<T>: BaseComponent where T: MovableObjectBase
+    public abstract class ScrollerComponentBase<T1, T2>: BaseComponent
+        where T1: MovableObjectBase<T2>
+        where T2: MovableObjectRuntimeData
     {
-        [SerializeField] protected T _objectPrefab;
+        [SerializeField] protected T1 _objectPrefab;
 
         [Header("Positions")]
         [SerializeField] protected float _positionOffset = 3f;
         [SerializeField] private Transform _anchorTransform;
 
-        protected ObjectPool<T> _objectPool;
-        protected Queue<T> _existingObjectQueue = new Queue<T>();
+        protected ObjectPool<T1> _objectPool;
+        protected Queue<T1> _existingObjectQueue = new Queue<T1>();
         protected Vector3 _anchorPosition => _anchorTransform.position;
 
         protected abstract float FinalYPos { get; }
+        protected virtual float CurrentSongTime { get; }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            _objectPool = new ObjectPool<T>
+            _objectPool = new ObjectPool<T1>
             (
-                () => Instantiate<T>(_objectPrefab), 
+                () => Instantiate<T1>(_objectPrefab), 
                 (obj) => obj.Show(),
                 (obj) => obj.Hide(),
                 (obj) => obj.SelfDestroy(),
@@ -43,9 +46,7 @@ namespace VoyageSandwich.World.Game
             if (_existingObjectQueue.Count <= 0)
                 return;
 
-            T firstObj = _existingObjectQueue.Peek();
-
-            foreach (T obj in _existingObjectQueue)
+            foreach (T1 obj in _existingObjectQueue)
             {
                 float currentYPos = obj.CurrentYPos;
                 currentYPos -= _positionOffset;
@@ -53,10 +54,11 @@ namespace VoyageSandwich.World.Game
                 obj.MoveY(currentYPos);
             }
 
+            T1 firstObj = _existingObjectQueue.Peek();
             if (firstObj.CurrentYPos <= FinalYPos)
             {
-                T landToBeRemoved = _existingObjectQueue.Dequeue();
-                _objectPool.Release(landToBeRemoved);
+                T1 objToBeRemoved = _existingObjectQueue.Dequeue();
+                _objectPool.Release(objToBeRemoved);
 
                 OnLastObjectScrollEnded();
             }
