@@ -15,7 +15,7 @@ namespace VoyageSandwich.World.Game
         [SerializeField] private float ChanceToSpawnPerStep;
         [SerializeField] private EnemyLibrary EnemyLibrary;
 
-        protected override float FinalYPos => _anchorPosition.y;
+        protected override float FinalYPos => _anchorPosition.y - _positionOffset;
         protected override float CurrentSongTime => _conductor.GetSongPosition();
 
         private CameraController _cameraController;
